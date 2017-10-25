@@ -1,0 +1,9 @@
+<input type="text" id="sql-editor" #editor>
+<button (click)="execute(editor.value)">Run</button>
+<div class="error" *ngIf="error">
+  {{error}}
+</div>
+<div class="success" *ngIf="!error && result">
+  Query executed successfully
+</div>
+<result-table></result-table>
