@@ -1,5 +1,7 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { ResultProcessor } from '../result-processor.service';
+import { QueryProcessor } from '../query-processor.service';
+
 @Component({
   selector: 'playground',
   templateUrl: './playground.component.html',
@@ -9,7 +11,7 @@ export class PlaygroundComponent implements OnInit {
   @ViewChild('editor') editor:ElementRef;
   error:String;
   result:any;
-  constructor(private resultProcessor:ResultProcessor) {
+  constructor(private resultProcessor: ResultProcessor, private queryProcessor: QueryProcessor) {
   }
 
   ngOnInit() {
@@ -22,6 +24,7 @@ export class PlaygroundComponent implements OnInit {
         this.result = data;
         console.log(this.result);
         this.resultProcessor.setResult(this.result);
+        this.queryProcessor.storeQuery(query);
         this.error = undefined;
       })
       .catch((error) => {

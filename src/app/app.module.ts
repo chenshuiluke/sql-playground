@@ -5,11 +5,13 @@ import { AppComponent } from './app.component';
 import { PlaygroundComponent } from './playground/playground.component';
 import { ResultTableComponent } from './result-table/result-table.component';
 import { providers } from './providers';
+import { QueryHistoryListComponent } from './query-history-list/query-history-list.component';
 @NgModule({
   declarations: [
     AppComponent,
     PlaygroundComponent,
-    ResultTableComponent
+    ResultTableComponent,
+    QueryHistoryListComponent
   ],
   imports: [
     BrowserModule
