@@ -7,9 +7,18 @@ import { ResultProcessor } from '../result-processor.service';
 })
 export class ResultTableComponent implements OnInit {
   columns:String[];
+  rows:any[];
   constructor(private resultProcessor:ResultProcessor) { 
-    this.resultProcessor.getSubject().subscribe((result) => {
-      this.columns = this.resultProcessor.getColumns();
+    this.resultProcessor.result.subscribe((result) => {
+      try{
+        this.columns = this.resultProcessor.getColumns();
+        this.rows = this.resultProcessor.getRowResults();
+      }
+      catch(err){
+        this.columns = undefined;
+        this.rows = undefined;
+        console.log(err);
+      }    
     });
   }
 
