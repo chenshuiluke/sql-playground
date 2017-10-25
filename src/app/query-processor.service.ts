@@ -25,10 +25,13 @@ export class QueryProcessor{
 
     getQueryHistoryList(){
         let result = alasql('SELECT query_text FROM sql_playground_db.queries');
-        let list:String[] = [];
+        let list:String[] = this.queryHistory.getValue();
         console.log(`result: ` + result);
         for(let counter = 0; counter < result.length; counter++){
-            list.push(result[counter].query_text);
+            let item:String = result[counter].query_text;
+            if(this.queryHistory.getValue().indexOf(item) === -1){
+                list.push(item);
+            }
         }
         this.queryHistory.next(list);
     }
