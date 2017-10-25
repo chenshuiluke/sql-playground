@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { ResultProcessor } from '../result-processor.service';
 @Component({
   selector: 'playground',
@@ -6,6 +6,7 @@ import { ResultProcessor } from '../result-processor.service';
   styleUrls: ['./playground.component.css']
 })
 export class PlaygroundComponent implements OnInit {
+  @ViewChild('editor') editor:ElementRef;
   error:String;
   result:any;
   constructor(private resultProcessor:ResultProcessor) {
@@ -27,5 +28,12 @@ export class PlaygroundComponent implements OnInit {
         console.log(error.message);
         this.error = error.message;
       });
+  }
+
+  executeDemoQuery(){
+    let demo:String = `CREATE TABLE IF NOT EXISTS demo (id INT AUTOINCREMENT, name VARCHAR);
+    INSERT INTO demo (name) VALUES ("hi"), ("hello"), ("sup"); SELECT * FROM demo;`;
+    this.editor.nativeElement.value = demo;
+    this.execute(demo);
   }
 }
