@@ -1,6 +1,9 @@
-<table>
+<table class="table is-bordered is-striped is-narrow is-fullwidth">
   <thead *ngIf="columns">
-    <th *ngFor="let column of columns">{{column}}</th>
+    <tr>
+        <th *ngFor="let column of columns">{{column}}</th>
+    </tr>
+    
   </thead>
   <tbody>
     <tr *ngFor="let row of rows">

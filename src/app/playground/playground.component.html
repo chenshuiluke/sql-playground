@@ -1,6 +1,6 @@
-<textarea id="sql-editor" #editor></textarea>
-<button (click)="execute(editor.value)">Run</button>
-<button (click)="executeDemoQuery()">Run Demo Query</button>
+<textarea id="sql-editor" class="textarea" placeholder="Query" #editor></textarea>
+<input class="button" type="submit" (click)="execute(editor.value)" value="Run">
+<input class="button" type="submit" (click)="executeDemoQuery()" value="Run Demo">
 <div class="error" *ngIf="error">
   {{error}}
 </div>

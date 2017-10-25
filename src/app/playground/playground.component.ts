@@ -19,6 +19,10 @@ export class PlaygroundComponent implements OnInit {
 
   execute(query:String){
     console.log(query);
+    if(query.trim().length === 0){
+      this.error = "Please enter a query to run.";
+      return;
+    }
     alasql.promise(query)
       .then((data) => {
         this.result = data;

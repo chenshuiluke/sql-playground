@@ -1,5 +1,13 @@
-<h3 *ngIf="queryList">Query History</h3>
-<div *ngFor="let query of queryList">
-  <p>{{query}}</p>
-  <hr/>
-</div>
+<table class="table is-bordered is-striped is-narrow is-fullwidth" *ngIf="queryList && queryList.length > 0">
+    <thead>
+      <tr>
+          <th>Query History</th>
+      </tr>
+      
+    </thead>
+    <tbody>
+      <tr *ngFor="let query of queryList">
+        <td>{{query}}</td>
+      </tr>
+    </tbody>
+  </table>
